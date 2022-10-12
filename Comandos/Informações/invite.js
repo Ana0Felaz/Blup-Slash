@@ -10,8 +10,9 @@ module.exports = {
         .setTitle("Invite")
         .setColor("Blue")
         .setThumbnail(`https://cdn.discordapp.com/avatars/1014752767824384022/5fe76833c366085ba46c800d82291957.webp?size=256`)
+        .setImage(`https://cdn.discordapp.com/avatars/1014752767824384022/5fe76833c366085ba46c800d82291957.webp?size=256`)
         .setTimestamp()
-        .setDescription(`Clique no botão abaixo para pegar o meu link para me dar add em seu servidor do Discord`);
+        .setDescription(`*Clique no botão abaixo para pegar o meu link para me dar add em seu servidor do Discord*`);
 
         let botao = new Discord.ActionRowBuilder().addComponents(
             new Discord.ButtonBuilder()
