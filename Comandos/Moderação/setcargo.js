@@ -10,7 +10,14 @@ module.exports = {
         description: "Mencione o cargo que deseja ser adicionado no botão.",
         type: Discord.ApplicationCommandOptionType.Role,
         required: true,
-    }
+    },
+
+    {
+        name: "texto",
+        description: "Escreva um texto para a embed.",
+        type: Discord.ApplicationCommandOptionType.String,
+        required: true,
+    },
 ],
 
   run: async (client, interaction) => {
@@ -19,17 +26,18 @@ module.exports = {
         interaction.reply({ content: `Você não possui permissão para utilizar este comando.`, ephemeral: true })
     } else {
         let cargo = interaction.options.getRole("cargo");
+        let textoo = interaction.options.getString('texto')
 
         let embed = new Discord.EmbedBuilder()
         .setColor("Blue")
         .setAuthor({ name: interaction.guild.name, iconURL: interaction.guild.iconURL({ dynamic: true }) })
-        .setDescription(`Clique no botão abaixo para verificar que você não é um robo`);
+        .setDescription(`${textoo}`);
 
         let botao = new Discord.ActionRowBuilder().addComponents(
             new Discord.ButtonBuilder()
             .setCustomId("cargo_b" + interaction.id)
-            .setLabel("Captcha")
-            .setStyle(Discord.ButtonStyle.Secondary)
+            .setLabel("Verificar ✔")
+            .setStyle(Discord.ButtonStyle.Primary)
         );
 
         interaction.reply({ embeds: [embed], components: [botao] }).then( () => {
